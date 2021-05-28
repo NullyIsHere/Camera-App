@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <video autoplay controls> </video>
+    <script>
+
+        // selecting video element
+        let video = document.querySelector("video");
+        let constraints = { video: true } // permission we want to access like video audio etc  are the constraints
+
+
+        // navigator is browser buildin  object to having child mediaDevices to getUsermedia which accept all permission 
+        // constraints and return a promise with live mediaStream which is an object and assign to source 
+        navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
+            
+            video.srcObject = mediaStream; // assigning src object to video instead on url  
+        });
+    </script>
+</body>
+
+</html>
