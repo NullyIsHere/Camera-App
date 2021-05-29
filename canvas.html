@@ -24,6 +24,8 @@ canvas.height  = window.innerHeight;
 canvas.width = window.innerWidth;
 
 let ctx = canvas.getContext("2d"); // mode 2d or 3d
+
+/*
 ctx.beginPath(); // To initiate path
 ctx.moveTo(100,300); // move to path (postion, position)
 ctx.lineTo(300, 400); // plot to path (postion, position)
@@ -35,6 +37,24 @@ ctx.moveTo(300,400);
 ctx.lineTo(600,200);
 ctx.strokeStyle = "red"; // diff color to make it identical
 ctx.stroke();
+
+ctx.fillStyle="red"; //color of fill reactangle - no stroke needed in rect
+ctx.fillRect(50,100,300,400); // to create a reactangle (x,y, width, height); 
+
+*/
+
+
+let image = document.createElement("img");
+image.src="img.png";
+
+image.addEventListener("load",function(){ //on load
+
+    ctx.drawImage(image, 0 , 0); // drawimage (imagehtml, coordinates)
+
+})
+
+
+
 
 
 </script>

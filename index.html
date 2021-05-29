@@ -7,62 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<link rel="stylesheet" href="style.css">
 
 <body>
 
-    <video autoplay controls> </video>
-    <button>Record</button>
-    <script>
-
-        // selecting video element
-        let video = document.querySelector("video");
-        let constraints = { video: true, audio:true } // permission we want to access like video audio etc  are the constraints
-        let btn = document.querySelector("button");
-        let mediaRecoder;
-        let isrecording=false;
-        let chunks=[];
-
-        btn.addEventListener("click",function(e){
-
-            if(isrecording){
-
-                mediaRecoder.stop();
-                isrecording=false;
-                btn.innerHTML="Record";
-            }else{
-
-                mediaRecoder.start();
-                isrecording=true;
-                btn.innerHTML="Recoding...";
-
-            }
-
-        })
-        // navigator is browser buildin  object to having child mediaDevices to getUsermedia which accept all permission 
-        // constraints and return a promise with live mediaStream which is an object and assign to source 
-        navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
-
-            video.srcObject = mediaStream; // assigning src object to video instead on url  
-            mediaRecoder = new MediaRecorder(mediaStream); // passing th stream to recorder
-
-            mediaRecoder.addEventListener("dataavailable", function(e){ //event 1
-                chunks.push(e.data);
-            });
-
-            mediaRecoder.addEventListener("stop",function(e){ //event 2
-                let blob = new Blob(chunks, {type: "video/mp4"});
-                chunks = [];
-
-                //  creating download url 
-                let url = URL.createObjectURL(blob);
-                let a = document.createElement("a");
-                a.href = url;
-                a.download = "video.mp4";
-                a.click();
-                a.remove();
-            });
-        });
-    </script>
+    <div class="video-container">
+        <video autoplay> </video>
+    </div>
+    <button id="record">
+        <div></div></button>
+    <button id="capture">
+        <div></div>
+    </button>
+  <script src="./script.js"></script>
 </body>
 
 </html>
