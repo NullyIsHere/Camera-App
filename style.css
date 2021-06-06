@@ -59,7 +59,7 @@ video {
 }
 
 .record-animation{
-  animation: inOut .5s infinite ; ;
+  animation: inOut .6s infinite ; ;
 }
 
 @keyframes inOut {
