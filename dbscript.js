@@ -26,7 +26,7 @@ request.addEventListener("success", function () {
 });
 
 request.addEventListener("upgradeneeded", function () {
-    let db= request.result;
+    let db= request.result; // created another instance beacause we get dbAccess in success event and upgrade event is triggled before success event so we need a new instance of the varibale to get the access 
     db.createObjectStore("gallery", { keyPath: "mId" }); // createobjStore event can be only done in upgradneeded event
 });
 

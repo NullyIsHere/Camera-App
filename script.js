@@ -92,7 +92,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
         //event 2 of media Recorder
         let blob = new Blob(chunks, { type: "video/mp4" }); // basically adding up small chunks of data to one in format mp4
 
-        addMedia("video", blob);
+        addMedia("video", blob); // blob is basically object pointing to memory-> RAM  so directly storing into db instead of storing it into RAM  
         chunks = []; //empty the stored data
 
         //  creating download url - via creating ancor element and appending href and download value
@@ -124,7 +124,7 @@ function captureImage() {
     }
     let a = document.createElement("a");
     a.download = "image.jpg";
-    a.href = canvas.toDataURL();
+    a.href = canvas.toDataURL();  // doing todataURL because its not pointing to memory (RAM), dataurl it contains the url itself 
     addMedia("img", canvas.toDataURL())
     a.click();
     a.remove();
