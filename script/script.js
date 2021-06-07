@@ -17,6 +17,15 @@ let minZoom = 1;
 let maxZoom = 3;
 let currentZoom = 1;
 
+let gallery = document.querySelector("#gallery");
+
+
+
+gallery.addEventListener("click", function(){
+    location.assign("gallery.html");
+})
+
+
 for (let i = 0; i < filters.length; i++) {
     filters[i].addEventListener("click", function (e) {
         filter = e.currentTarget.style.backgroundColor;
@@ -100,7 +109,7 @@ navigator.mediaDevices.getUserMedia(constraints).then(function (mediaStream) {
         let a = document.createElement("a");
         a.href = url;
         a.download = "video.mp4";
-        a.click();
+        // a.click();
         a.remove();
     });
 });
@@ -126,8 +135,9 @@ function captureImage() {
     a.download = "image.jpg";
     a.href = canvas.toDataURL();  // doing todataURL because its not pointing to memory (RAM), dataurl it contains the url itself 
     addMedia("img", canvas.toDataURL())
-    a.click();
+    // a.click(); -- cause direct download nhi krna so removed temp
     a.remove();
+    
 }
 
 /*Filter Events */
